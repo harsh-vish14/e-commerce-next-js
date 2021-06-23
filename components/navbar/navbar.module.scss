@@ -1,0 +1,16 @@
+.active {
+  font-weight: 800;
+}
+.navbar {
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  .navlinks {
+    display: flex;
+    div {
+      margin: 0px 10px;
+    }
+  }
+}
