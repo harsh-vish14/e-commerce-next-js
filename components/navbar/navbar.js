@@ -1,11 +1,16 @@
 import NavLink from "./navLink";
+import Link from "next/link";
 import Image from "next/image";
 import classes from "./navbar.module.scss";
 const Navbar = () => {
   return (
     <div className={classes.navbar}>
       <div classes={classes.logo}>
-        <Image src="/logo/logo.svg" height="30" width="50" />
+        <Link href="/">
+          <a>
+            <Image src="/logo/logo.svg" height="30" width="50" />
+          </a>
+        </Link>
       </div>
       <div className={classes.navlinks}>
         <div>
