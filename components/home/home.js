@@ -24,7 +24,7 @@ const Home = () => {
       <div className={classes.titleBox}>
         <div className={classes.title}>Get Everything to your doorsteps</div>
         <div>
-          <Link href="#products">
+          <Link href="#main">
             <a>
               <div className={classes.btn}>Start Shopping</div>
             </a>
