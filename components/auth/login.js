@@ -4,15 +4,20 @@ import { useRef, useState } from "react";
 import Alert from "react-bootstrap/Alert";
 import { signInWithCredentials } from "../../lib/gettingAndSetting";
 import { signIn } from "next-auth/client";
+import { useRouter } from "next/router";
 import classes from "./login.module.scss";
+
 const Login = () => {
   const [isLogin, setIsLogin] = useState(true);
   const [alertBoxState, setAlertBoxState] = useState({
     message: "Loading...",
     state: "secondary",
   });
+  const router = useRouter();
   const [showAlertBox, setShowAlertBox] = useState(false);
-
+  const googleSignedIn = async () => {
+    await signIn("google");
+  };
   const username = useRef();
   const email = useRef();
   const password = useRef();
@@ -35,6 +40,7 @@ const Login = () => {
           message: "Logged user successfully",
           state: "success",
         });
+        router.push("/", undefined, { shallow: true });
       } else {
         setAlertBoxState({ message: result.error, state: "danger" });
       }
@@ -106,7 +112,7 @@ const Login = () => {
             <span>OR</span>
           </div>
           <div>
-            <GoogleButton type="light" />
+            <GoogleButton type="light" onClick={googleSignedIn} />
           </div>
         </div>
       </div>

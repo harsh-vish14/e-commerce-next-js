@@ -34,6 +34,8 @@ const signInHandler = async (req, res) => {
       name,
       email,
       password: hashedPassword,
+      links: [],
+      carts: [],
     });
     res.status(200).json({ message: "user added successfully" });
   }

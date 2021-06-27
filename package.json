@@ -9,18 +9,22 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@material-ui/core": "^4.11.4",
+    "@stripe/react-stripe-js": "^1.4.1",
+    "@stripe/stripe-js": "^1.15.1",
+    "@szhsin/react-menu": "^1.10.1",
     "bcryptjs": "^2.4.3",
     "bootstrap": "^4.6.0",
     "firebase": "^8.6.8",
     "next": "11.0.0",
     "next-auth": "^3.27.0",
     "next-sass": "^1.0.3",
+    "nookies": "^2.5.2",
     "react": "17.0.2",
     "react-bootstrap": "^1.6.1",
     "react-dom": "17.0.2",
     "react-google-button": "^0.7.2",
-    "react-icons": "^4.2.0"
+    "react-icons": "^4.2.0",
+    "stripe": "^8.157.0"
   },
   "devDependencies": {
     "eslint": "7.29.0",

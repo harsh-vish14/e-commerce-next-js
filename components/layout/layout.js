@@ -1,9 +1,11 @@
+import { useSession } from "next-auth/client";
 import { Fragment } from "react";
-import Navbar from "../navbar/navbar";
+import Navbar from "../../components/navbar/navbar";
 const Layout = (props) => {
+  const [session, loading] = useSession();
   return (
     <Fragment>
-      <Navbar />
+      {!loading && <Navbar session={session} />}
       <main>{props.children}</main>
     </Fragment>
   );

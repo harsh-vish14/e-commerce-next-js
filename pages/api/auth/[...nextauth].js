@@ -8,19 +8,25 @@ export default NextAuth({
     jws: true,
   },
   providers: [
+    Providers.Google({
+      clientId: process.env.AUTH_GOOGLE_CLIENT_KEY,
+      clientSecret: process.env.AUTH_GOOGLE_SECRET_KEY,
+    }),
     Providers.Credentials({
       async authorize(credentials) {
         const user = await db
           .collection("users")
           .where("email", "in", [credentials.email])
           .get();
-        if (user.empty) {
-          throw new Error("User not found");
-        }
+        console.log(credentials);
         const userData = [];
         user.forEach((user) => {
           userData.push(user.data());
         });
+        if (userData.length == 0) {
+          throw new Error("User not found");
+        }
+
         const isCorrect = await compareHandler(
           credentials.password,
           userData[0].password
@@ -46,25 +52,28 @@ export default NextAuth({
         const userDetails = await db.collection("users").add({
           email: user.email,
           name: user.name,
+          links: [],
+          carts: [],
         });
         return {
           user: {
-            userID: userdetails.id,
+            userID: userDetails.id,
             email: user.email,
             name: user.name,
           },
         };
       }
       var result;
-      userData.forEach((data) => {
+      userData.forEach((user) => {
         result = {
           user: {
-            userID: data.id,
-            email: data.data().email,
-            name: data.data().name,
+            userID: user.id,
+            email: user.data().email,
+            name: user.data().name,
           },
         };
       });
+      return result;
     },
   },
 });
