@@ -2,6 +2,7 @@ import Image from "next/image";
 import NumberFormat from "react-number-format";
 import { AiTwotoneStar } from "react-icons/ai";
 import classes from "./productCard.module.scss";
+import Like from "../likeBtn/likebtn";
 const ProductCard = ({ cardData }) => {
   return (
     <div className={classes.card}>
@@ -31,7 +32,9 @@ const ProductCard = ({ cardData }) => {
           />
         </div>
       </div>
-      <div></div>
+      <div className={classes.likebtn}>
+        <Like productId={cardData.id} />
+      </div>
     </div>
   );
 };

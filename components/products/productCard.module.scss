@@ -1,5 +1,6 @@
 .card {
   min-width: 320px;
+
   padding: 2px;
   border-radius: 5px;
   border: 1px solid #d6d6d6;
@@ -38,5 +39,11 @@
   .cardPrice {
     margin: 10px;
     font-weight: 600;
+  }
+  position: relative;
+  .likebtn {
+    position: absolute;
+    top: 0px;
+    right: 0px;
   }
 }

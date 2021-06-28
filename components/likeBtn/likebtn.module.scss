@@ -1,0 +1,18 @@
+.like {
+  font-size: 20px;
+  width: fit-content;
+  padding: 10px;
+  cursor: pointer;
+  &:hover {
+    svg {
+      fill: red;
+      stroke: red;
+    }
+  }
+}
+.likeActive {
+  svg {
+    fill: red;
+    stroke: red;
+  }
+}

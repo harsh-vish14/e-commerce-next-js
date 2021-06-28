@@ -52,7 +52,7 @@ export default NextAuth({
         const userDetails = await db.collection("users").add({
           email: user.email,
           name: user.name,
-          links: [],
+          likes: [],
           carts: [],
         });
         return {

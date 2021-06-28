@@ -8,12 +8,22 @@ import "@szhsin/react-menu/dist/index.css";
 import Image from "next/image";
 import { signOut } from "next-auth/client";
 import classes from "./navbar.module.scss";
-import { useState } from "react";
 import Button from "react-bootstrap/Button";
-import Dropdown from "react-bootstrap/Dropdown";
-const Navbar = ({ session }) => {
-  const [likes, setLikes] = useState(0);
-  const [cartItems, setCartItems] = useState(0);
+import { userDetails } from "../../context/userDetailsContext";
+import { useSession } from "next-auth/client";
+import { useContext, useEffect } from "react";
+import { getUserDetails } from "../../lib/gettingAndSetting";
+const Navbar = () => {
+  const userDetailsContext = useContext(userDetails);
+  const [session, loading] = useSession();
+  useEffect(async () => {
+    if (!loading && session) {
+      const result = await getUserDetails(session.user.userID);
+      userDetailsContext.setLikesItems(result.data.likes || []);
+      userDetailsContext.setCartsItems(result.data.carts || []);
+    }
+  }, [loading]);
+
   const logoutHandler = () => {
     signOut();
   };
@@ -33,20 +43,35 @@ const Navbar = ({ session }) => {
         {session ? (
           <div>
             <div className={`${classes.navlinks}`}>
-              <div className={classes.navlinksPc} counter={1}>
-                <AiOutlineHeart />
-                <label>{likes > 9 ? "9+" : likes}</label>
+              <div className={classes.navlinksPc}>
+                <Link href="/favorite">
+                  <a>
+                    <AiOutlineHeart />
+                    <label>
+                      {userDetailsContext.like.length > 9
+                        ? "9+"
+                        : userDetailsContext.like.length}
+                    </label>
+                  </a>
+                </Link>
               </div>
               <div className={classes.navlinksPc}>
-                <MdAddShoppingCart />
-                <label>{cartItems > 9 ? "9+" : cartItems}</label>
+                <Link href="#">
+                  <a>
+                    <MdAddShoppingCart />
+                    <label>
+                      {userDetailsContext.carts.length > 9
+                        ? "9+"
+                        : userDetailsContext.carts.length}
+                    </label>
+                  </a>
+                </Link>
               </div>
-        <div className={classes.logoutPC} onClick={logoutHandler}>
-        
-          <Button variant="danger">
-            <div className={classes.logout}>Logout</div>
-          </Button>
-        </div>
+              <div className={classes.logoutPC} onClick={logoutHandler}>
+                <Button variant="danger">
+                  <div className={classes.logout}>Logout</div>
+                </Button>
+              </div>
             </div>
             <div className={classes.mobileLinks}>
               <Menu
@@ -58,19 +83,34 @@ const Navbar = ({ session }) => {
                   <NavLink href="/" text="Home" />
                 </MenuItem>
                 <MenuItem>
-                  <div className={classes.navlinksIcon} counter={1}>
-                    <AiOutlineHeart />
-                    <label>{likes > 9 ? "9+" : likes}</label>
-                  </div>
+                  <Link href="/favorite">
+                    <a>
+                      <div className={classes.navlinksIcon} counter={1}>
+                        <AiOutlineHeart />
+                        <label>
+                          {userDetailsContext.like > 9
+                            ? "9+"
+                            : userDetailsContext.like}
+                        </label>
+                      </div>
+                    </a>
+                  </Link>
                 </MenuItem>
                 <MenuItem>
-                  <div className={classes.navlinksIcon}>
-                    <MdAddShoppingCart />
-                    <label>{cartItems > 9 ? "9+" : cartItems}</label>
-                  </div>
+                  <Link href="#">
+                    <a>
+                      <div className={classes.navlinksIcon}>
+                        <MdAddShoppingCart />
+                        <label>
+                          {userDetailsContext.carts > 9
+                            ? "9+"
+                            : userDetailsContext.carts}
+                        </label>
+                      </div>
+                    </a>
+                  </Link>
                 </MenuItem>
                 <MenuItem>
-                
                   <Button variant="danger" onClick={logoutHandler}>
                     <div className={classes.logout}>Logout</div>
                   </Button>
@@ -80,7 +120,23 @@ const Navbar = ({ session }) => {
           </div>
         ) : (
           <div>
-            <NavLink href="/auth/login" text="Login/signIn" />
+            <div className={classes.mobileLinks}>
+              <Menu
+                menuButton={({ open }) => (
+                  <MenuButton>{open ? <MdClose /> : <FiMenu />}</MenuButton>
+                )}
+              >
+                <MenuItem>
+                  <NavLink href="/" text="Home" />
+                </MenuItem>
+                <MenuItem>
+                  <NavLink href="/auth/login" text="Login/signIn" />
+                </MenuItem>
+              </Menu>
+            </div>
+            <div className={classes.navlinksPc}>
+              <NavLink href="/auth/login" text="Login/signIn" />
+            </div>
           </div>
         )}
       </div>
