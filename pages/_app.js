@@ -5,7 +5,9 @@ import Layout from "../components/layout/layout";
 import { UserDetailsContextProvider } from "../context/userDetailsContext";
 import { ProductsContextProvider } from "../context/productsContext";
 import NProgress from "nprogress";
+import Router from "next/router";
 import "../components/np.scss";
+
 Router.onRouteChangeStart = (url) => {
   NProgress.start();
 };
