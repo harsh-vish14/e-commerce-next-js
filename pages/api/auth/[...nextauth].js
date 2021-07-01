@@ -18,7 +18,6 @@ export default NextAuth({
           .collection("users")
           .where("email", "in", [credentials.email])
           .get();
-        console.log(credentials);
         const userData = [];
         user.forEach((user) => {
           userData.push(user.data());

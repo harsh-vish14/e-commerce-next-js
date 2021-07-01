@@ -24,7 +24,6 @@ const ProductCard = ({ cardData, cartProducts = false, key }) => {
       "cart",
       false
     );
-    console.log(result);
   };
   return (
     <div className={classes.card}>

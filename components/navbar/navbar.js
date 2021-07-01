@@ -21,7 +21,6 @@ const Navbar = () => {
       const result = await getUserDetails(session.user.userID);
 
       userDetailsContext.setLikesItems(result.data.likes || []);
-      console.log(result.data.carts);
       userDetailsContext.setCartsItems(result.data.carts || []);
     }
   }, [loading]);

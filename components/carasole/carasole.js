@@ -3,10 +3,6 @@ import Carousel from "react-bootstrap/Carousel";
 import classes from "./carousel.module.scss";
 import Image from "next/image";
 function ControlledCarousel({ imgIndex, setImagIndex }) {
-  // const [index, setIndex] = useState(0);
-  // useEffect(() => {
-  //   setIndex(index);
-  // }, [imgIndex]);
   const handleSelect = (selectedIndex, e) => {
     setImagIndex(selectedIndex);
   };

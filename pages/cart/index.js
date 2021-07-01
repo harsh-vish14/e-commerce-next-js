@@ -2,7 +2,6 @@ import { getSession } from "next-auth/client";
 import Cart from "../../components/cart/cart";
 
 const CartPage = ({ session }) => {
-  // console.log(cartItem);
   return <Cart session={session} />;
 };
 export const getServerSideProps = async (context) => {

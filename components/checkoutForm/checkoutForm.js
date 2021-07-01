@@ -60,7 +60,6 @@ const CheckOutForm = ({ paymentIntent, amount, email, session }) => {
         }
       } catch (e) {
         handleClose();
-        console.log(e.message);
       }
     }
   };

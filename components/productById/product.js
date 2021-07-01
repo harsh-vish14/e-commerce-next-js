@@ -42,7 +42,6 @@ const ProductById = ({ productId, productDetails }) => {
         "cart",
         true
       );
-      console.log(result);
       return;
     }
   };

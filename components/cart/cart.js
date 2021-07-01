@@ -30,7 +30,6 @@ const Cart = ({ session }) => {
       userId: session.user.userID,
       operation: "cart",
     });
-    console.log(result);
   };
 
   return (
