@@ -45,7 +45,9 @@ const CheckOutForm = ({ paymentIntent, amount, email, session }) => {
             card: element.getElement(CardElement),
           },
         });
+
         if (error) throw new Error(error);
+
         if (status === "succeeded") {
           setSegment([70, 100]);
           UserDetailsContext.setCartsItems([]);
@@ -60,6 +62,7 @@ const CheckOutForm = ({ paymentIntent, amount, email, session }) => {
         }
       } catch (e) {
         handleClose();
+        window.location.reload();
       }
     }
   };
