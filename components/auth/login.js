@@ -18,6 +18,7 @@ const Login = () => {
   const [showAlertBox, setShowAlertBox] = useState(false);
   const googleSignedIn = async () => {
     await signIn("google");
+    router.push("/", undefined, { shallow: true });
   };
   const username = useRef();
   const email = useRef();
