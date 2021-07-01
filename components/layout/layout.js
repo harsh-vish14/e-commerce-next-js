@@ -8,7 +8,7 @@ const Layout = (props) => {
     <Fragment>
       <Head>
         <title>E-commerce-hv</title>
-        <link rel="stylesheet" type="image/svg" href="/logo/logo.svg" />
+        <link rel="icon" type="image/svg" href="/logo/logo.svg" />
         <meta
           name="viewport"
           content="width=device-width, initial-scale=1.0"

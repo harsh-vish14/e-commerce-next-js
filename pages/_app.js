@@ -4,6 +4,13 @@ import "../styles/globals.scss";
 import Layout from "../components/layout/layout";
 import { UserDetailsContextProvider } from "../context/userDetailsContext";
 import { ProductsContextProvider } from "../context/productsContext";
+import NProgress from "nprogress";
+import "../components/np.scss";
+Router.onRouteChangeStart = (url) => {
+  NProgress.start();
+};
+Router.onRouteChangeComplete = () => NProgress.done();
+Router.onRouteChangeError = () => NProgress.done();
 
 function MyApp({ Component, pageProps }) {
   return (
