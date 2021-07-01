@@ -11,7 +11,7 @@ const userDetails = async (req, res) => {
       res.status(200).json({ err: "user not found" });
       return;
     }
-    // c/onst userData = user.get();
+
     res.status(200).json((await user.get()).data());
   }
 };

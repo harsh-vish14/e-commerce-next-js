@@ -1,0 +1,54 @@
+.product {
+  display: flex;
+  gap: 10px;
+  margin: 10px;
+  justify-content: center;
+  div {
+    margin: 10px 0px;
+  }
+  .carousel {
+    width: 50vw;
+
+    min-width: 550px;
+  }
+  .productInfo {
+    width: 40%;
+  }
+  .title {
+    font-size: 40px;
+    font-weight: bolder;
+    text-transform: capitalize;
+  }
+  .brand {
+    text-transform: uppercase;
+    font-size: 30px;
+    font-weight: bolder;
+    opacity: 0.2;
+  }
+  .buttons {
+    display: flex;
+    justify-content: space-around;
+  }
+  .rating {
+    svg {
+      fill: #ffc107;
+      filter: drop-shadow(0px 0px 1px #ffc107);
+    }
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  .product {
+    display: block;
+    .carousel {
+      width: 100%;
+    }
+    .productInfo {
+      width: 60%;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      margin: auto;
+    }
+  }
+}

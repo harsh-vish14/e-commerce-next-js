@@ -19,7 +19,9 @@ const Navbar = () => {
   useEffect(async () => {
     if (!loading && session) {
       const result = await getUserDetails(session.user.userID);
+
       userDetailsContext.setLikesItems(result.data.likes || []);
+      console.log(result.data.carts);
       userDetailsContext.setCartsItems(result.data.carts || []);
     }
   }, [loading]);
@@ -56,7 +58,7 @@ const Navbar = () => {
                 </Link>
               </div>
               <div className={classes.navlinksPc}>
-                <Link href="#">
+                <Link href="/cart">
                   <a>
                     <MdAddShoppingCart />
                     <label>
@@ -97,7 +99,7 @@ const Navbar = () => {
                   </Link>
                 </MenuItem>
                 <MenuItem>
-                  <Link href="#">
+                  <Link href="/cart">
                     <a>
                       <div className={classes.navlinksIcon}>
                         <MdAddShoppingCart />

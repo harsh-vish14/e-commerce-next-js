@@ -7,14 +7,15 @@ import ProductCard from "./productCard";
 import classes from "./products.module.scss";
 
 const Products = () => {
-  const [cardsData, setCardsData] = useState([]);
   const [loading, setLoading] = useState(true);
   const productsContext = useContext(ProductsContext);
   useEffect(async () => {
+    if (productsContext.products.length > 0) {
+      setLoading(false);
+    }
     const result = await getAllCardsDetails();
-    setLoading(false);
-    setCardsData(result.data);
     productsContext.setProducts(result.data);
+    setLoading(false);
   }, []);
   if (loading) {
     return (
@@ -27,8 +28,8 @@ const Products = () => {
   }
   return (
     <div className={classes.products}>
-      {cardsData &&
-        cardsData.map((card) => {
+      {productsContext.products &&
+        productsContext.products.map((card) => {
           return <ProductCard key={card.id} cardData={card} />;
         })}
     </div>

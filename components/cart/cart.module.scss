@@ -1,0 +1,25 @@
+.cartItems {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.userDetails {
+  margin: 10px;
+  .userName {
+    font-size: 30px;
+    text-transform: capitalize;
+  }
+  .userEmail {
+    font-size: 20px;
+    opacity: 0.5;
+  }
+  .userAmount {
+    font-size: 50px;
+    font-weight: 800;
+    display: flex;
+    div {
+      margin: 0px 10px;
+    }
+  }
+}

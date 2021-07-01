@@ -6,6 +6,7 @@ import { signInWithCredentials } from "../../lib/gettingAndSetting";
 import { signIn } from "next-auth/client";
 import { useRouter } from "next/router";
 import classes from "./login.module.scss";
+import Image from "next/image";
 
 const Login = () => {
   const [isLogin, setIsLogin] = useState(true);
@@ -117,7 +118,7 @@ const Login = () => {
         </div>
       </div>
       <div>
-        <img src="/login.svg" />
+        <Image src="/login.svg" height={300} width={300} />
         {showAlertBox && (
           <div className={classes.alertBox}>
             <Alert variant={alertBoxState.state}>{alertBoxState.message}</Alert>

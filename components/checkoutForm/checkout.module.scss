@@ -1,0 +1,30 @@
+.checkoutForm {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  .image {
+    width: 500px;
+    margin: 30px;
+    margin-right: -50px;
+  }
+  .paymentInput {
+    margin: 30px 0px;
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  .checkoutForm {
+    .image {
+      width: 300px;
+    }
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .checkoutForm {
+    .image {
+      display: none;
+      width: 00px;
+    }
+  }
+}

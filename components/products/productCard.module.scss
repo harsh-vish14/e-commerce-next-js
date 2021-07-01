@@ -1,6 +1,9 @@
 .card {
+  a {
+    color: black;
+    text-decoration: none;
+  }
   min-width: 320px;
-
   padding: 2px;
   border-radius: 5px;
   border: 1px solid #d6d6d6;
@@ -45,5 +48,20 @@
     position: absolute;
     top: 0px;
     right: 0px;
+  }
+}
+.cartBtn {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  div {
+    width: fit-content;
+    margin: auto;
+  }
+  .cartCounter {
+    // font-size: 20px;
+    .productCounter {
+      margin: 10px;
+    }
   }
 }
